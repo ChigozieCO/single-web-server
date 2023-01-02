@@ -8,7 +8,7 @@ provider "aws" {
 resource "aws_instance" "server1" {
   ami                    = "ami-0a6b2839d44d781b2"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = ["aws_security_group.server1-SG.id"]
+  vpc_security_group_ids = [aws_security_group.server1-SG.id]
 
   # This Bash script is what will be used to the return the "hello world" text on our web server.
 
