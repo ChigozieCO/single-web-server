@@ -6,11 +6,11 @@ provider "aws" {
 # Because we have not specified any VPC ID, this instance would be deployed in the default VPC with the subnet chosen at random.
 
 resource "aws_instance" "server1" {
-  ami           = "ami-0a6b2839d44d781b2"
-  instance_type = "t2.micro"
-  vpc_security_group_ids = [ "aws_security_group.server1-SG.id" ]
+  ami                    = "ami-0a6b2839d44d781b2"
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = ["aws_security_group.server1-SG.id"]
 
-# This Bash script is what will be used to the return the "hello world" text on our web server.
+  # This Bash script is what will be used to the return the "hello world" text on our web server.
 
   user_data = <<-EOF
   #!/bin/bash
@@ -31,13 +31,9 @@ resource "aws_security_group" "server1-SG" {
   name = "server1-SG"
 
   ingress {
-    from_port = 8080
-    to_port = 8080
-    protocol = "tcp" 
-    cidr_blocks = [ "0.0.0.0/0" ]
-   }
-  tags {
-    Name = "server1-SG"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
